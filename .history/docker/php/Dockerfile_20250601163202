@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     zip unzip \
     curl \
     gnupg \
+    php8.2-fpm\
     && docker-php-ext-install pdo_mysql
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
