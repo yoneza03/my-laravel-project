@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ShoppingFuelController;
 use App\Http\Controllers\SharedController;
 
@@ -10,12 +9,9 @@ use App\Http\Controllers\SharedController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-
+// Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
+// Route::get('/shopping-fuel', [ShoppingFuelController::class, 'index'])->name('shoppingFuel.index');
 Route::post('/shopping-fuel', [ShoppingFuelController::class, 'store'])->name('shoppingFuel.store');
 Route::get('/shopping-fuel/{id}', [ShoppingFuelController::class, 'show'])->name('shoppingFuel.show');
 Route::put('/shopping-fuel/{id}', [ShoppingFuelController::class, 'update'])->name('shoppingFuel.update');
