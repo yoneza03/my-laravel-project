@@ -29,5 +29,5 @@ class LoginController extends Controller
         'message' => 'ログイン情報が正しくありません。',
         'back_url' => route('login')
     ], 403);
-    }
+
 }

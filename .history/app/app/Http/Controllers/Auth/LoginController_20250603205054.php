@@ -24,10 +24,6 @@ class LoginController extends Controller
         return redirect()->route('home'); // ログイン成功時、ホーム画面へ遷移
     }
 
-    // ログイン失敗時にエラーページへ遷移
-    return response()->view('error_page', [
-        'message' => 'ログイン情報が正しくありません。',
-        'back_url' => route('login')
-    ], 403);
+    return back()->withErrors(['login' => 'ログイン情報が正しくありません']);
     }
 }
