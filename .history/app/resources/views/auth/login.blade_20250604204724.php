@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
+{{-- 
+    <h1>ログイン画面</h1>
+    <form action="{{ route('login') }}" method="POST">
+        @csrf
+        <label for="email">メールアドレス:</label>
+        <input type="email" name="email" required>
+        <label for="password">パスワード:</label>
+        <input type="password" name="password" required>
+        <button type="submit">ログイン</button>
+    </form> --}}
     @extends('layouts.app')
 
-    @section('content')
+    {{-- @section('content') --}}
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="border rounded p-4 shadow text-center" style="width: 400px;">
             <h2 class="mb-4">ログイン</h2>
@@ -43,6 +53,6 @@
             </form>
         </div>
     </div>
-    @endsection
+    {{-- @endsection --}}
 </body>
 </html>

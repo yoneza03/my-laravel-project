@@ -11,6 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -23,7 +24,5 @@ Route::delete('/shopping-fuel/{id}', [ShoppingFuelController::class, 'destroy'])
 Route::get('/shopping-fuel', [ShoppingFuelController::class, 'index']);
 
 Route::get('/shared', [SharedController::class, 'index']);
-Route::get('/password-reset', [PasswordResetController::class, 'showRequestForm'])->name('password_reset_request');
-
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+Route::get('/password-reset', [PasswordResetController::class, 'showRequestForm'])->name('password_reset_request');

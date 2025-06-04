@@ -9,6 +9,17 @@
 <body>
     @extends('layouts.app')
 
+    <h1>ログイン画面</h1>
+    <form action="{{ route('login') }}" method="POST">
+        @csrf
+        <label for="email">メールアドレス:</label>
+        <input type="email" name="email" required>
+        <label for="password">パスワード:</label>
+        <input type="password" name="password" required>
+        <button type="submit">ログイン</button>
+    </form>
+    {{-- @extends('layouts.app')
+
     @section('content')
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="border rounded p-4 shadow text-center" style="width: 400px;">
@@ -43,6 +54,6 @@
             </form>
         </div>
     </div>
-    @endsection
+    @endsection --}}
 </body>
 </html>
