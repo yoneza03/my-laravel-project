@@ -54,4 +54,7 @@ class RegisterController extends Controller
         return redirect()->route('register.confirm');
     }
 
+    public function register(Request $request)
+    {
+    }
 }

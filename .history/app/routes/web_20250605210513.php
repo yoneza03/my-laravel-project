@@ -27,5 +27,3 @@ Route::get('/password-reset', [PasswordResetController::class, 'showRequestForm'
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
-
-Route::post('/register/confirm', [RegisterController::class, 'confirm'])->name('register.confirm');

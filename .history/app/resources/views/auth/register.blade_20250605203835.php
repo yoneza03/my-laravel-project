@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン</title>
+    <title>新規登録</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
@@ -12,17 +12,15 @@
     @section('content')
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="border rounded p-4 shadow text-center" style="width: 400px;">
+            <h2 class="mb-4">新規登録</h2>
 
-            @if (session('success'))
-                <div class="alert alert-success text-center">
-                    {{ session('success') }}
-                </div>
-            @endif        
-            
-            <h2 class="mb-4">ログイン</h2>
-
+            <!-- ユーザー名フォーム -->
+            <div class="mb-3">
+                <label for="name" class="form-label">ユーザー名</label>
+                <input type="text" name="name" class="form-control" required> 
+            </div>
             <!-- メールアドレスフォーム -->
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('register.post') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">メールアドレス</label>
@@ -34,19 +32,9 @@
                     <label for="password" class="form-label">パスワード</label>
                     <input type="password" name="password" class="form-control" required>
                 </div>
-
-                <!-- パスワードリセット -->
-                <div class="mb-3">
-                    <a href="{{ route('password_reset_request') }}">パスワードを忘れた方はこちら</a>
-                </div>
-
-                <!-- 新規登録 -->
-                <div class="mb-4">
-                    <a href="{{ route('register') }}" class="btn btn-outline-primary w-100">新規登録</a>
-                </div>
-
-                <!-- ログインボタン -->
-                <button type="submit" class="btn btn-primary w-100">ログイン</button>
+                
+                <!-- 入力確認ボタン -->
+                <button type="submit" class="btn btn-primary w-100">入力確認</button>
             </form>
         </div>
     </div>

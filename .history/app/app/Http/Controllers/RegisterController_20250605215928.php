@@ -29,17 +29,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // 🔹 実際にDBへ登録
-        $user = User::create([
-            'name' => session('name'),
-            'email' => session('email'),
-            'password' => Hash::make(session('password')),
-        ]);
-
-        // 🔹 セッションをクリアして登録完了メッセージを設定
-        session()->forget(['name', 'email', 'password']);
-        return redirect()->route('login')->with('success', '新規登録完了しました！');
-
+        return redirect()->route('home')->with('success', 'ユーザー登録が完了しました！');
     }
 
     public function confirm(Request $request)
@@ -53,5 +43,6 @@ class RegisterController extends Controller
 
         return redirect()->route('register.confirm');
     }
+
 
 }
