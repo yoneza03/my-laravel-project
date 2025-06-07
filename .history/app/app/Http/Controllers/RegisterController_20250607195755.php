@@ -39,17 +39,17 @@ class RegisterController extends Controller
     }
 
     public function confirm(Request $request)
-    {
-        session([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
+{
+    session([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password,
+    ]);
 
-        return view('auth.register_confirm')->with([
-            'name' => session('name'),
-            'email' => session('email'),
-            'password' => session('password')
-        ]);
-    }
+    return view('auth.register_confirm')->with([
+        'name' => session('name'),
+        'email' => session('email'),
+        'password' => session('password')
+    ]);
+}
 }

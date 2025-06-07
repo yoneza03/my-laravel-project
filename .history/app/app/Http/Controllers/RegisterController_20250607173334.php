@@ -46,7 +46,7 @@ class RegisterController extends Controller
             'password' => $request->password,
         ]);
 
-        return view('auth.register_confirm')->with([
+        return view('auth.register_confirm', [
             'name' => session('name'),
             'email' => session('email'),
             'password' => session('password')

@@ -16,13 +16,13 @@
 
                 <p><strong>ユーザー名：</strong> {{ $name }}</p>
                 <p><strong>メールアドレス：</strong> {{ $email }}</p>
-
                 <form action="{{ route('register.post') }}" method="POST">
                 @csrf
+                
                 <!-- 登録ボタン -->
-                <input type="hidden" name="name" value="{{ $name }}">
-                <input type="hidden" name="email" value="{{ $email }}">
-                <input type="hidden" name="password" value="{{ $password }}">
+                <input type="hidden" name="name" value="{{ session('name') }}">
+                <input type="hidden" name="email" value="{{ session('email') }}">
+                <input type="hidden" name="password" value="{{ session('password') }}">
                 <button type="submit" class="btn btn-primary w-100">登録</button>
             </form>
         </div>

@@ -19,6 +19,7 @@
 
                 <form action="{{ route('register.post') }}" method="POST">
                 @csrf
+                
                 <!-- 登録ボタン -->
                 <input type="hidden" name="name" value="{{ $name }}">
                 <input type="hidden" name="email" value="{{ $email }}">
