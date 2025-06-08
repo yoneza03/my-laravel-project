@@ -58,9 +58,8 @@ class PasswordResetController extends Controller
 //         dd('リダイレクト直前！');
 //         return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
 //     } 
-    public function resetPassword(Request $request)
+public function resetPassword(Request $request)
     {
-        dd('ユーザー確認', $request->all()); // 🔹 ここでリクエストデータを表示！
 
         $request->validate([
             'password' => 'required|string|min:8|confirmed',
@@ -75,8 +74,6 @@ class PasswordResetController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        dd('パスワード更新後！', $user); // 🔹 パスワード更新後のデータを確認！
-        
         return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
     }
 }

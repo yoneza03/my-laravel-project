@@ -23,13 +23,13 @@ class PasswordResetController extends Controller
         $token = Password::createToken(User::where('email', $request->email)->first());
 
         // 🔹 パスワードリセットリンクを作成
-        $resetUrl = route('password.reset.form', ['token' => $token, 'email' => $request->email]);
+        $resetUrl = route('password.reset.form', ['token' => $token]);
 
         // 🔹 メール送信（Mailファサードを利用）
         \Mail::send('auth.password_reset_email', ['resetUrl' => $resetUrl], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('パスワードリセットリンク');
-        });        
+        });
         return back()->with('success', 'パスワードリセットリンクを送信しました！');
     }
     
@@ -38,30 +38,8 @@ class PasswordResetController extends Controller
         return view('auth.password_reset', compact('token'));
     }
 
-//    public function resetPassword(Request $request)
-//     {
-//         $request->validate([
-//             'password' => 'required|string|min:8|confirmed',
-//         ]);
-
-//         $user = User::where('email', $request->email)->first();
-
-//         if (!$user) {
-//             return back()->withErrors(['email' => 'ユーザーが見つかりません']);
-//         }
-
-//         $user->timestamps = true;
-//         $user->update([
-//             'password' => Hash::make($request->password),
-//         ]);
-
-//         dd('リダイレクト直前！');
-//         return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
-//     } 
     public function resetPassword(Request $request)
     {
-        dd('ユーザー確認', $request->all()); // 🔹 ここでリクエストデータを表示！
-
         $request->validate([
             'password' => 'required|string|min:8|confirmed',
         ]);
@@ -71,12 +49,12 @@ class PasswordResetController extends Controller
             return back()->withErrors(['email' => 'ユーザーが見つかりません']);
         }
 
+        // 🔹 パスワードを更新
         $user->update([
             'password' => Hash::make($request->password),
         ]);
 
-        dd('パスワード更新後！', $user); // 🔹 パスワード更新後のデータを確認！
-        
         return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
     }
+
 }

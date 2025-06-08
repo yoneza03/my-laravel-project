@@ -37,7 +37,7 @@
 
                 <!-- パスワードリセット -->
                 <div class="mb-3">
-                    <a href="{{ route('password.reset') }}" class="btn btn-outline-primary w-100">パスワードを忘れた方</a>
+                    <a href="{{ route('password.reset.request') }}" class="btn btn-outline-primary w-100">パスワードを忘れた方</a>
                 </div>
 
                 <!-- 新規登録 -->

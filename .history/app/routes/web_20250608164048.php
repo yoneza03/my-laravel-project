@@ -15,6 +15,7 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::post('/shopping-fuel', [ShoppingFuelController::class, 'store'])->name('shoppingFuel.store');
@@ -29,10 +30,13 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
 Route::post('/register/confirm', [RegisterController::class, 'confirm'])->name('register.confirm');
+// Route::post('/register/confirm', [RegisterController::class, 'confirm']);
 Route::get('/register/confirm', [RegisterController::class, 'confirm'])->name('register.confirm');
+// Route::get('/register/confirm', function () {
+//     return view('auth.register_confirm');
+// })->name('register.confirm');
 
-Route::get('/password-reset', [PasswordResetController::class, 'showRequestForm'])->name('password.reset');
 Route::post('/password-reset', [PasswordResetController::class, 'sendResetLink'])->name('password.reset.send');
-
+Route::get('/password-reset', [PasswordResetController::class, 'showRequestForm'])->name('password.reset.request');
 Route::get('/password-reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset.form');
 Route::post('/password-reset/{token}', [PasswordResetController::class, 'resetPassword'])->name('password.reset.complete');

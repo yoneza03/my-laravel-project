@@ -38,45 +38,43 @@ class PasswordResetController extends Controller
         return view('auth.password_reset', compact('token'));
     }
 
-//    public function resetPassword(Request $request)
-//     {
-//         $request->validate([
-//             'password' => 'required|string|min:8|confirmed',
-//         ]);
+    // public function resetPassword(Request $request)
+    // {
 
-//         $user = User::where('email', $request->email)->first();
+    // $request->validate([
+    //     'password' => 'required|string|min:8|confirmed',
+    // ]);
 
-//         if (!$user) {
-//             return back()->withErrors(['email' => 'ユーザーが見つかりません']);
-//         }
+    // $user = User::where('email', $request->email)->first();
+    // dd('ユーザー確認', $user);
+    // if (!$user) {
+    //     return back()->withErrors(['email' => 'ユーザーが見つかりません']);
+    // }
 
-//         $user->timestamps = true;
-//         $user->update([
-//             'password' => Hash::make($request->password),
-//         ]);
+    // $user->update([
+    //     'password' => Hash::make($request->password),
+    // ]);
 
-//         dd('リダイレクト直前！');
-//         return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
-//     } 
-    public function resetPassword(Request $request)
+    // return redirect()->route('login')->with('success', 'パスワード再設定が完了しました！');
+    // }
+   public function resetPassword(Request $request)
     {
-        dd('ユーザー確認', $request->all()); // 🔹 ここでリクエストデータを表示！
-
         $request->validate([
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::where('email', $request->email)->first();
+
         if (!$user) {
             return back()->withErrors(['email' => 'ユーザーが見つかりません']);
         }
 
+        $user->timestamps = true;
         $user->update([
             'password' => Hash::make($request->password),
         ]);
-
-        dd('パスワード更新後！', $user); // 🔹 パスワード更新後のデータを確認！
         
+        dd('リダイレクト直前！');
         return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
-    }
+    } 
 }
