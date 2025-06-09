@@ -15,7 +15,6 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 Route::post('/shopping-fuel', [ShoppingFuelController::class, 'store'])->name('shoppingFuel.store');
 Route::get('/shopping-fuel/{id}', [ShoppingFuelController::class, 'show'])->name('shoppingFuel.show');
@@ -27,6 +26,7 @@ Route::get('/shared', [SharedController::class, 'index']);
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+
 Route::post('/register/confirm', [RegisterController::class, 'confirm'])->name('register.confirm');
 Route::get('/register/confirm', [RegisterController::class, 'confirm'])->name('register.confirm');
 

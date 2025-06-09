@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use App\Models\User;
-
 
 class RegisterController extends Controller
 {
@@ -15,26 +13,30 @@ class RegisterController extends Controller
     return view('auth.register');
     }
 
-public function register(Request $request)
-{
-    Log::info('register() メソッドが実行されました！', $request->all());
+    public function register(Request $request)
+    {
 
+    // 🔹 バリデーション
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users',
         'password' => 'required|string|min:8|confirmed',
     ]);
 
+    // 🔹 実際にDBへ登録
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
-        'password' => Hash::make($request->password),
+        'password' => Hash::make($request->password), //  パスワードをハッシュ化
     ]);
 
-    dd('ユーザー登録完了！', $user); // 🔹 ユーザーが登録されているか最終確認！
+    // 🔹 セッションをクリアして登録完了メッセージを設定
+    session()->forget(['name', 'email', 'password']);
 
+    dd('リダイレクト直前！'); // 🔹 ここでデバッグを追加！
     return redirect()->route('login')->with('success', '新規登録が完了しました！');
-}
+    }
+
     public function confirm(Request $request)
     {
         session([

@@ -53,6 +53,7 @@ class PasswordResetController extends Controller
         'password' => Hash::make($request->password),
     ]);
 
+    dd('リダイレクト直前！'); // 🔹 ここでデバッグを追加！
     return redirect()->route('login')->with('success', 'パスワード再設定完了しました！');
     }
 }

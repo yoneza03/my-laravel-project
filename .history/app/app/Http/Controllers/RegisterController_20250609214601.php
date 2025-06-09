@@ -17,7 +17,7 @@ class RegisterController extends Controller
 
 public function register(Request $request)
 {
-    Log::info('register() メソッドが実行されました！', $request->all());
+    Log::info('register() メソッドが実行されました！', $request->all()); //  強制的にログ出力！
 
     $request->validate([
         'name' => 'required|string|max:255',
@@ -31,7 +31,7 @@ public function register(Request $request)
         'password' => Hash::make($request->password),
     ]);
 
-    dd('ユーザー登録完了！', $user); // 🔹 ユーザーが登録されているか最終確認！
+    exit('リダイレクト前で処理停止！'); //  ここで処理が止まるか確認！
 
     return redirect()->route('login')->with('success', '新規登録が完了しました！');
 }
