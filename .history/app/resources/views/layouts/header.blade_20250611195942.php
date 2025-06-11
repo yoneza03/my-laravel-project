@@ -4,9 +4,6 @@
     </a>
 
     @if(Auth::check()) {{-- ログイン済みなら表示 --}}
-        @if(request()->routeIs('home')) {{-- ホーム画面なら表示 --}}
-            <a href="{{ route('home') }}" class="btn btn-primary">ホームへ戻る</a>
-            <a href="{{ route('logout') }}" class="btn btn-danger">ログアウト</a>
-        @endif
+        <a href="{{ route('logout') }}" class="btn btn-danger">ログアウト</a>
     @endif
 </header>

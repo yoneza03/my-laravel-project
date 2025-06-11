@@ -1,0 +1,2 @@
+[2025-06-09 12:47:45] local.INFO: register() メソッドが実行されました！ {"_token":"IrZW88nZrk3fdNiTnfFodrUA1xWHoSU5tGy19cEV","name":"s","email":"test@example.com","password":"8uhb7ygv"} 
+[2025-06-09 12:52:13] local.INFO: register() メソッドが実行されました！ {"_token":"IrZW88nZrk3fdNiTnfFodrUA1xWHoSU5tGy19cEV","name":"outlook","email":"test@example.com","password":"345678"} 
